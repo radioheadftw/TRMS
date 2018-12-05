@@ -1,0 +1,5 @@
+#DB Connection Details
+
+url=jdbc:postgresql://postgresqldb.ceywoscyxjst.us-east-1.rds.amazonaws.com:5432/postgresqldb?
+user=radioheadftw
+password=squid115
