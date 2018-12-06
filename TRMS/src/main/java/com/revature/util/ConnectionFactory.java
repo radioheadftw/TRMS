@@ -14,7 +14,7 @@ public class ConnectionFactory {
 	private static String user;
 	private static String password;
 	private static ConnectionFactory cf = null;
-	private static final String filename = "C:/Users/j-lei/Documents/workspace-sts-3.9.4.RELEASE/TRMS/src/main/resources/Properties";
+	private static final String filename = "C:/Users/j-lei/Documents/workspace-sts-3.9.4.RELEASE/TRMS/TRMS/TRMS/src/main/resources/Properties";
 	
 	private ConnectionFactory() {
 		try {
