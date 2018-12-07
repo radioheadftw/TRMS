@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Tuition Reimbursement Management System</title>
+<style>
+	body {
+    	background-color: #D3DAE4;
+	}
+	
+	h2 {
+		text-align : center;
+    	font-family: "Verdana";
+	}
+	
+	h4 {
+		text-align : center;
+    	font-family: "Verdana";
+	}
+
+	.text {
+		width: 233px;
+	}
+	
+	.menu {
+    	background-color: #6393DA;
+    	border: none;
+    	color: white;
+    	padding: 2px 18px;
+    	font-size: 16px;
+    	cursor: pointer;
+    	width: 128px; 
+	}
+	
+	.logout {
+    	background-color: #E74D38;
+    	border: none;
+    	color: white;
+    	padding: 2px 18px;
+    	font-size: 16px;
+    	cursor: pointer;
+    	width: 128px;
+	}
+
+	.menu:hover {
+    	background-color: #667FA4;
+	}
+	
+	.logout:hover {
+    	background-color: #85362B;
+	}
+	
+	.div{
+		margin: 0 auto;
+     	width: 100px;
+	}
+	
+	#div1{
+		position:relative;
+		right:1.5%
+	}
+	
+</style>
+</head>
+<body>
+	<h2>Tuition Reimbursement Management System</h2>
+	<h4>Benefits Coordinator Menu</h4>
+	<form id="menu" method="post" action="Employee">
+	<div id="div1" class="div">
+		<input type="submit" value="Submit Form" name="formButton" id="form" class="menu">
+	</div>
+	<br>
+	<div id="div1" class="div">
+		<input type="submit" value="View Form" name="viewFormButton" id="view" class="menu">
+	</div>
+	<br>
+	<div id="div1" class="div">
+		<input type="submit" value="Logout" name="logoutButton" id="logout" class="logout">
+	</div>
+	</form>
+</body>
+</html>

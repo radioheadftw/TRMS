@@ -38,16 +38,27 @@ public class LoginServlet extends HttpServlet {
 			HttpSession sess = request.getSession();
 			sess.setAttribute("user",user);
 			
-			//redirect
-			//resp.sendRedirect("home.html");
 			// send a forward to maintain Request Scope between Servlets
 			if(user.getRole()==1) {
 				RequestDispatcher rd = request.getRequestDispatcher("employee.html");
 				rd.forward(request, response);
 			}
+			else if(user.getRole()==2) {
+				RequestDispatcher rd = request.getRequestDispatcher("supervisor.html");
+				rd.forward(request, response);
+			}
+			else if(user.getRole()==3) {
+				RequestDispatcher rd = request.getRequestDispatcher("departmenthead.html");
+				rd.forward(request, response);
+			}
+			else if(user.getRole()==4) {
+				RequestDispatcher rd = request.getRequestDispatcher("benco.html");
+				rd.forward(request, response);
+			}
 		}
 		else {
-			response.getWriter().write("An invalid combination of username and password was used.");
+			request.setAttribute("message", "Invalid login credentials.");
+			request.getRequestDispatcher("login.jsp").forward(request,response);
 		}
 	}
 

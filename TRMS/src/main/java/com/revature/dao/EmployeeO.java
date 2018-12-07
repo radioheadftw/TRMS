@@ -12,11 +12,6 @@ import com.revature.util.ConnectionFactory;
 public class EmployeeO implements EmployeeDAO {
 
 	@Override
-	public Employee getEmployee(int eid) {
-		return null;
-	}
-
-	@Override
 	public Employee getEmployeeByUsername(String username) {
 		Connection connection = ConnectionFactory.getConnectionFactory().createConnection();
 		try {
@@ -45,12 +40,6 @@ public class EmployeeO implements EmployeeDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public boolean updateEmployee(Employee user) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 	private Employee extractEmployeeFromResultSet(ResultSet rs) throws SQLException {
 		Employee user = new Employee();
@@ -64,6 +53,30 @@ public class EmployeeO implements EmployeeDAO {
 		user.setSupervisor(rs.getInt("supervisor"));
 		
 		return user;
+	}
+
+	@Override
+	public int getEidByUsername(String username) {
+		Connection connection = ConnectionFactory.getConnectionFactory().createConnection();
+		try {
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM employee WHERE username='" +username+"';");
+			if(rs.next())
+			{
+				return extractEmployeeFromResultSet(rs).getEid();
+			}
+			connection.close();
+		} 
+		catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 }

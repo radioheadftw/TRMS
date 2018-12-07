@@ -12,11 +12,8 @@
 		text-align : center;
     	font-family: "Verdana";
 	}
+	
 	h4 {
-		text-align : center;
-    	font-family: "Verdana";
-	}
-	h6 {
 		text-align : center;
     	font-family: "Verdana";
 	}
@@ -25,131 +22,61 @@
 		width: 233px;
 	}
 	
-	#div {
-		position: relative;
-		right: -280%;
-	}
-	
-	#div1 {
-		position: relative;
-		right: -280%;
-	}
-
-	#submit {
+	.menu {
     	background-color: #6393DA;
     	border: none;
     	color: white;
     	padding: 2px 18px;
     	font-size: 16px;
-    	cursor: pointer; 
+    	cursor: pointer;
+    	width: 128px; 
 	}
 	
-	#logout {
+	.logout {
     	background-color: #E74D38;
     	border: none;
     	color: white;
     	padding: 2px 18px;
     	font-size: 16px;
-    	cursor: pointer; 
+    	cursor: pointer;
+    	width: 128px;
 	}
 
-	#submit:hover {
+	.menu:hover {
     	background-color: #667FA4;
 	}
 	
-	#logout:hover {
+	.logout:hover {
     	background-color: #85362B;
 	}
-
-	#form{
-		width: 300px;
-    	margin: 0 auto;
+	
+	.div{
+		margin: 0 auto;
+     	width: 100px;
 	}
 	
-	#eventtype{
-		width: 238px;
+	#div1{
+		position:relative;
+		right:1.5%
 	}
 	
-	#typeofapproval{
-		width: 238px;
-	}
-	
-	.attach{
-		width: 238px;
-	}
 </style>
 </head>
 <body>
 	<h2>Tuition Reimbursement Management System</h2>
-	<h4>Submission Form</h4>
-	<h6>-Please use prefilled boxes as formatting examples, change values as needed.-</h6>
-	<form action = "submit" method ="post" id="form">
-		<table>
-			<tr><td><label for = "firstname">First name:</label>
-			<td><input type ="text" class ="text" name = "firstname"/><br>
-			<tr><td><label for = "lastname">Last name:</label>
-			<td><input type = "text" class ="text" name = "lastname"/>
-			<tr><td><label for = "date">Date:</label>
-			<td><input type ="date" class ="text" name = "date" id="date"/><br>
-			<tr><td><label for = "time">Time:</label>
-			<td><input type = "time" class ="text" name = "time" value = "08:00:00 EST"/>
-			<tr><td><label for = "location">Location:</label>
-			<td><input type ="text" class ="text" name = "location"/><br>
-			<tr><td><label for = "description">Description:</label>
-			<td><input type = "text" class ="text" name = "description"/>
-			<tr><td><label for = "cost">Cost:</label>
-			<td><input type ="text" class ="text" name = "cost"/><br>
-			<tr><td><label for = "gradingformat">Grading format:</label>
-			<td><select id="selectgradingformat">
-  				<option>Presentation after event completion.</option>
-  				<option>Grade given after event completion.</option>
-			</select>
-			<tr><td><label for = "eventtype">Event Type:</label>
-			<td><select id="eventtype">
-  				<option>University Courses</option>
-  				<option>Seminars</option>
-  				<option>Certification Preparation Classes</option>
-  				<option>Certification</option>
-  				<option>Technical Training</option>
-  				<option>Other</option>
-			</select><tr><td><tr><td>
-			<tr><td><label for = "optional">Optional:</label>
-			<tr><td><label for ="workmissed">Work missed (in hours):</label>
-			<td><input type ="text" class ="text" name = "workmissed"/><br>
-			<tr><td><label for = "typeofapproval">Type of approval:</label>
-			<td><select id="typeofapproval">
-				<option></option>
-  				<option>Direct supervisor.</option>
-  				<option>Department head.</option>
-			</select>
-			<tr><td><label for = "approval">Attach approval email:</label>
-			<td><input type="file" id="approvalfile" class = "attach" name="approvalfile" accept=".msg">
-			<tr><td><label for = "document">Attach supporting document:</label>
-			<td><input type="file" id="inputfile" name="inputfile" class = "attach" accept="application/pdf, image/png, image/jpeg, text/plain, application/doc">
-			<tr><td><div id="div1"><button type="submit" value="Submit" id="submit" class="button">Submit</button></div>
-			<tr><td>
-			<tr><td>
-			</table>
-			</form>
-		<form action="TRMS/logout" method="post">
-    		<input type="submit" value="logout" />
-    		<div id="div"><button type="submit" value="logout" id="logout" class ="button">Logout</button></div>
-    	</form>	
+	<h4>Employee Menu</h4>
+	<form id="menu" method="post" action="Employee">
+	<div id="div1" class="div">
+		<input type="submit" value="Submit Form" name="formButton" id="form" class="menu">
+	</div>
+	<br>
+	<div id="div1" class="div">
+		<input type="submit" value="View Form" name="viewFormButton" id="view" class="menu">
+	</div>
+	<br>
+	<div id="div1" class="div">
+		<input type="submit" value="Logout" name="logoutButton" id="logout" class="logout">
+	</div>
+	</form>
 </body>
-<script>
-	n =  new Date();
-	y = n.getFullYear();
-	m = n.getMonth() + 1;
-	d = n.getDate();
-	
-	if(m < 10){
-		m = '0'+m;
-	}
-	if(d < 10){
-		d = '0'+d;
-	}
-	
-	document.getElementById("date").value = m+"/"+d+"/"+y;
-	document.getElementById("date").min = m+"/"+d+"/"+y;
-</script>
 </html>
