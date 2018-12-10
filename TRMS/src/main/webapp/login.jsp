@@ -25,8 +25,8 @@
 	}
 	
 	#div {
-		position: absolute;
-		right: 41.6%;
+		position: relative;
+		right: -211.25%;
 	}
 
 	#login {

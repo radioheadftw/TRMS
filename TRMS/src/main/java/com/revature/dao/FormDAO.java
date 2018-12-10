@@ -1,5 +1,8 @@
 package com.revature.dao;
 
+import java.util.List;
+
+import com.revature.main.Employee;
 import com.revature.main.Form;
 
 public interface FormDAO {
@@ -8,4 +11,9 @@ public interface FormDAO {
 	boolean makeUrgent(int eid);
 	boolean approvalEmail(int eid);
 	boolean attachment(int eid);
+	boolean changeStatus(Form form);
+	List<Form> getPendingSupervisor();
+	List<Form> getPendingDepartmentHead();
+	List<Form> getPendingBenco();
+	List<Form> getPending(Employee emp);
 }

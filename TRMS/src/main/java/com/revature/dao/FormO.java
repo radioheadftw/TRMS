@@ -1,13 +1,14 @@
 package com.revature.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.revature.main.Employee;
 import com.revature.main.Form;
 import com.revature.util.ConnectionFactory;
 
@@ -113,5 +114,142 @@ public class FormO implements FormDAO{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public List<Form> getPendingSupervisor() {
+		Connection connection = ConnectionFactory.getConnectionFactory().createConnection();
+		try {
+	        Statement stmt = connection.createStatement();
+	        ResultSet rs = stmt.executeQuery("SELECT * FROM form where approvalstatus=0;");
+	        List<Form> formList = new ArrayList<>();
+	        
+	        while(rs.next())
+	        {
+	            Form form = extractFormFromResultSet(rs); 
+	            formList.add(form);
+	        }
+	        connection.close();
+	        return formList;
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	    }
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Form> getPendingDepartmentHead() {
+		Connection connection = ConnectionFactory.getConnectionFactory().createConnection();
+		try {
+	        Statement stmt = connection.createStatement();
+	        ResultSet rs = stmt.executeQuery("SELECT * FROM form where approvalstatus=1;");
+	        List<Form> formList = new ArrayList<>();
+	        
+	        while(rs.next())
+	        {
+	            Form form = extractFormFromResultSet(rs); 
+	            formList.add(form);
+	        }
+	        connection.close();
+	        return formList;
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	    }
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Form> getPendingBenco() {
+		Connection connection = ConnectionFactory.getConnectionFactory().createConnection();
+		try {
+	        Statement stmt = connection.createStatement();
+	        ResultSet rs = stmt.executeQuery("SELECT * FROM form where approvalstatus=2;");
+	        List<Form> formList = new ArrayList<>();
+	        
+	        while(rs.next())
+	        {
+	            Form form = extractFormFromResultSet(rs); 
+	            formList.add(form);
+	        }
+	        connection.close();
+	        return formList;
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	    }
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public boolean changeStatus(Form form) {
+		Connection connection = ConnectionFactory.getConnectionFactory().createConnection();
+	    try {
+	        PreparedStatement ps = connection.prepareStatement("UPDATE form SET approvalstatus = ? where empid = ?;");
+	        ps.setInt(1, form.getApprovalStatus());
+	        ps.setInt(2, form.getEmpId());
+	          
+	        int i = ps.executeUpdate();
+	        if(i == 1) {
+	    	  connection.commit();
+	    	  connection.close();
+	          return true;
+	        }
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	    }
+	    try {
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    return false;
+	}
+
+	@Override
+	public List<Form> getPending(Employee emp) {
+		Connection connection = ConnectionFactory.getConnectionFactory().createConnection();
+		try {
+	        Statement stmt = connection.createStatement();
+	        int id = emp.getEid();
+	        ResultSet rs = stmt.executeQuery("SELECT * FROM form where empid="+id+";");
+	        List<Form> formList = new ArrayList<>();
+	        
+	        while(rs.next())
+	        {
+	            Form form = extractFormFromResultSet(rs); 
+	            formList.add(form);
+	        }
+	        connection.close();
+	        return formList;
+	    } catch (SQLException ex) {
+	        ex.printStackTrace();
+	    }
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
 
 }

@@ -84,12 +84,12 @@ public class FormServlet extends HttpServlet {
 			
 			Form form = new Form(empId,date,time,location,description,cost,gradingFormat,false,workMissed,typeOfApproval,date,false,eventType,false);
 			
-			if(request.getParameter("approvalfile") != null || request.getParameter("inputfile") != null) {
-				if(request.getParameter("inputfile") != null && request.getParameter("approvalfile") != null) {
+			if(!("").equals(request.getParameter("approvalfile")) || !("").equals(request.getParameter("inputfile"))) {
+				if(!("").equals(request.getParameter("inputfile")) && !("").equals(request.getParameter("approvalfile"))) {
 					form.setApprovalEmail(true);
 					form.setAttach(true);
 				}
-				else if(request.getParameter("inputfile") != null) {
+				else if(!("").equals(request.getParameter("inputfile"))) {
 					form.setAttach(true);
 				}
 				else {
